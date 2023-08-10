@@ -8,6 +8,8 @@ jobs:
               uses: actions/checkout@v3.5.3
             # - name: tar-apps
             #   run: tar -zcf ./zipped_apps/*.tgz ./apps/*
+            - name: make-zipped-apps
+              run: mkdir zipped_apps
             - name: Compress action step
               uses: a7ul/tar-action@v1.1.0
               id: compress
