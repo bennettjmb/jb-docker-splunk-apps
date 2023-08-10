@@ -7,7 +7,7 @@ jobs:
             - name: checkout-files
               uses: actions/checkout@v3.5.3
             - name: make-zipped-apps-dir
-              run: mkdir zipped_apps
+              run: mkdir -p zipped_apps
             - name: print-show-1
               run: pwd; ls; tree; ls ./apps
             - name: tar-apps
