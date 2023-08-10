@@ -16,9 +16,17 @@ jobs:
               run: pwd; ls; tree
             - uses: actions/upload-artifact@v3
               with:
-                name: my-artifact
+                name: zipped-apps
                 path: ./zipped_apps
+            - name: Commit files  # transfer the new html files back into the repository
+              run: |
+                git config --local user.name  ${{ github.actor }}        
+                git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+                git add ./zipped_apps/\*.tgz
+                git commit -am "Adding the zipped apps to the repo"
+                git push -f origin main
 
+              
 
 
 
