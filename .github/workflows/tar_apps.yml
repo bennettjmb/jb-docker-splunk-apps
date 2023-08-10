@@ -1,0 +1,9 @@
+name: tar-splunk-apps
+run-name: ${{ github.actor }} is converting the Splunk apps to .tgz
+on: [push]
+jobs:
+  tar-apps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install -g bats
