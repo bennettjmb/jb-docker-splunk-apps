@@ -17,6 +17,8 @@ jobs:
                 files: |
                    ./apps
                 outPath: apps.tgz
+            - name: print-show
+              run: pwd; ls; tree
             - name: Extract files
               uses: a7ul/tar-action@v1.1.0
               id: extract
