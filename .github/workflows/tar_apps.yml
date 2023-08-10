@@ -1,9 +1,26 @@
 name: tar-splunk-apps
-run-name: ${{ github.actor }} is converting the Splunk apps to .tgz
 on: [push]
 jobs:
     tar-apps:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3.5.3
-            - run: tar -zcf ./zipped_apps/*.tgz ./apps/*
+            - name: checkout-files
+              uses: actions/checkout@v3.5.3
+            # - name: tar-apps
+            #   run: tar -zcf ./zipped_apps/*.tgz ./apps/*
+            - name: Compress action step
+              uses: a7ul/tar-action@v1.1.0
+              id: compress
+              with:
+                command: c
+                cwd: .
+                files: |
+                   ./apps
+                outPath: apps.tgz
+            - name: Extract files
+              uses: a7ul/tar-action@v1.1.0
+              id: extract
+              with:
+                command: x
+                cwd: ./zipped_apps
+                files: apps.tgz
