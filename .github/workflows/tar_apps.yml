@@ -22,7 +22,7 @@ jobs:
               run: |
                 git config --local user.name  ${{ github.actor }}        
                 git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-                git add ./zipped_apps/\*.tgz
+                git add ./zipped_apps/\*.tar.gz
                 git commit -am "Adding the zipped apps to the repo"
                 git push -f origin main
 
