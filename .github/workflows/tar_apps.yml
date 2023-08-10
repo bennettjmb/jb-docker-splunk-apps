@@ -9,9 +9,9 @@ jobs:
             - name: make-zipped-apps-dir
               run: mkdir zipped_apps
             - name: print-show-1
-              run: pwd; ls; tree
+              run: pwd; ls; tree; ls ./apps
             - name: tar-apps
-              run: for i in $(find "./apps" -name "./*" -maxdepth 0 -type d -exec basename {} \;); do tar -cvf $i.tgz $i; done
+              run: for i in $(find "./apps" -name "*" -maxdepth 0 -type d -exec basename {} \;); do tar -cvf $i.tgz $i; done
             - name: print-show-2
               run: pwd; ls; tree
 
