@@ -11,7 +11,7 @@ jobs:
             - name: print-show-1
               run: pwd; ls; tree
             - name: tar-apps
-              run: for i in $(find ./apps -name ./* -level 0 -type d -mtime +14 -exec basename {} \;); do tar -cvf $i.tar $i; done
+              run: for i in $(find ~/apps -name "./*" -level 0 -type d -mtime +14 -exec basename {} \;); do tar -cvf $i.tgz $i; done
             - name: print-show-2
               run: pwd; ls; tree
 
