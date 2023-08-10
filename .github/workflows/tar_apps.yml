@@ -6,25 +6,49 @@ jobs:
         steps:
             - name: checkout-files
               uses: actions/checkout@v3.5.3
-            # - name: tar-apps
-            #   run: tar -zcf ./zipped_apps/*.tgz ./apps/*
-            - name: make-zipped-apps
+            - name: make-zipped-apps-dir
               run: mkdir zipped_apps
-            - name: Compress action step
-              uses: a7ul/tar-action@v1.1.0
-              id: compress
-              with:
-                command: c
-                cwd: .
-                files: |
-                   ./apps
-                outPath: apps.tgz
-            - name: print-show
+            - name: print-show-1
               run: pwd; ls; tree
-            - name: Extract files
-              uses: a7ul/tar-action@v1.1.0
-              id: extract
-              with:
-                command: x
-                cwd: ./zipped_apps
-                files: apps.tgz
+            - name: tar-apps
+              run: tar -zcf ./zipped_apps/*.tgz ./apps/*
+            - name: print-show-2
+              run: pwd; ls; tree
+
+
+
+
+
+
+
+
+# name: tar-splunk-apps
+# on: [push]
+# jobs:
+#     tar-apps:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: checkout-files
+#               uses: actions/checkout@v3.5.3
+#             # - name: tar-apps
+#             #   run: tar -zcf ./zipped_apps/*.tgz ./apps/*
+#             - name: make-zipped-apps
+#               run: mkdir zipped_apps
+#             - name: Compress action step
+#               uses: a7ul/tar-action@v1.1.0
+#               id: compress
+#               with:
+#                 command: c
+#                 cwd: .
+#                 files: |
+#                    ./apps/james_*
+#                 outPath: apps.tgz
+#             - name: print-show
+#               run: pwd; ls; tree
+#             - name: Extract files
+#               uses: a7ul/tar-action@v1.1.0
+#               id: extract
+#               with:
+#                 command: x
+#                 cwd: ./zipped_apps
+#                 files: apps.tgz
