@@ -11,7 +11,7 @@ jobs:
             - name: print-show-1
               run: pwd; ls; tree; ls ./apps
             - name: tar-apps
-              run: for i in $(find "./apps" -name "*" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;); do tar --format ustar -cvzf ./zipped_apps/$i.tar -C ./apps $i && gzip -v ./zipped_apps/$i.tar; done
+              run: for i in $(find "./apps" -name "*" -maxdepth 1 -mindepth 1 -type d -exec basename {} \;); do tar --format ustar -cvzf ./zipped_apps/$i.tar -C ./apps $i && gzip -vf ./zipped_apps/$i.tar; done
             - name: print-show-2
               run: pwd; ls; tree
             - uses: actions/upload-artifact@v3
